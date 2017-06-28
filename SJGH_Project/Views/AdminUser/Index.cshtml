@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "SJGH Admin Tools";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+
+<h2>User Account Manager</h2>
+
+<ul class="cmsfeatures">
+    <li>
+        <a href="@Url.Action("ListDoctor", "AdminUser")">
+            <img src="@Url.Content("~/Images/cms/surgeon1.png")" alt="Doctors List" />
+            <p>Doctors</p>
+        </a>
+    </li>
+    <li>
+        <a href="@Url.Action("ListPatient", "AdminUser")">
+            <img src="@Url.Content("~/Images/cms/person302.png")" alt="Patients List" />
+            <p>Patients</p>
+        </a>
+    </li>
+</ul>

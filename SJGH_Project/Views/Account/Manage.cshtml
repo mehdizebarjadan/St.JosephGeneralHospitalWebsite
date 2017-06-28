@@ -1,0 +1,36 @@
+﻿@model SJGH_Project.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/scStyle.css" rel="stylesheet" type="text/css" />
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title.</h2>
+</hgroup>
+
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+<p class="message-login-as">You're logged in as <strong>@User.Identity.Name</strong>.</p>
+
+@if (ViewBag.HasLocalPassword)
+{
+    @Html.Partial("_ChangePasswordPartial")
+}
+else
+{ 
+    @Html.Partial("_SetPasswordPartial")
+}
+
+@*<section id="externalLogins">
+    @Html.Action("RemoveExternalLogins")
+
+    <h3>Add an external login</h3>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

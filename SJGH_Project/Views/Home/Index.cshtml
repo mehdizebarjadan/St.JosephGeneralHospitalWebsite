@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<h2 class="seo">St. Joseph General Hospital features</h2>
+<div id="index_features">
+
+
+
+    <ul id="list_of_features">
+        <li id="home_newsfeed" class="double">
+            @*== Pato's Feature (Partial View to avoid model conflict) ==*@
+            @*@{Html.RenderPartial("_RotatingNewsFeed");}*@
+        </li>
+        <li id="home_ertime" class="single">
+            @*== Gulnar's Feature ==*@
+            <h4>ER waiting Time (Desktop, Ipad and for cell becomes the first)</h4>
+        </li>
+        <li id="home_calendar" class="single">
+            @*== title and icon ==*@
+            <div class="icon_and_title">
+                <a href="/EventCalendar/Index">
+                    <img src="~/Images/calendar_icon.png" class="feature_icon" />
+                    <h4>Calendar</h4>
+                </a>
+                @*= Clear floats =*@
+                <div class="clear"></div>
+            </div>
+            <div class="desc_feature">
+                <p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+            </div>
+            <div class="link_feature">
+                @Html.ActionLink("View", "dummy", null, new { href = "#" })
+            </div>
+            @*= Clear floats =*@
+            <div class="clear"></div>
+        </li>
+        <li id="home_donations" class="single">
+            @*== title and icon ==*@
+            <div class="icon_and_title">
+                <img src="~/Images/charity.png" class="feature_icon" />
+                <h4>Donations</h4>
+                @*= Clear floats =*@
+                <div class="clear"></div>
+            </div>
+            <div class="desc_feature">
+                <p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="link_feature">
+                @Html.ActionLink("Donate", "dummy", null, new { href = "#" })
+            </div>
+            @*= Clear floats =*@
+            <div class="clear"></div>
+        </li>
+        <li id="home_youtube" class="single">
+            @*== title and icon ==*@
+            <div class="icon_and_title">
+                <img src="~/Images/youtube.png" class="feature_icon" />
+                <h4>Videos</h4>
+                @*= Clear floats =*@
+                <div class="clear"></div>
+            </div>
+            <div class="desc_feature">
+                <p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="link_feature">
+                @Html.ActionLink("Watch", "dummy", null, new { href = "#" })
+            </div>
+            @*= Clear floats =*@
+            <div class="clear"></div>
+        </li>
+        <li id="home_prescription" class="single">
+            @*== title and icon ==*@
+            <div class="icon_and_title">
+                <img src="~/Images/prescription.png" class="feature_icon" />
+                <h4>Prescriptions</h4>
+                @*= Clear floats =*@
+                <div class="clear"></div>
+            </div>
+            <div class="desc_feature">
+                <p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="link_feature">
+                @Html.ActionLink("Order", "dummy", null, new { href = "#" })
+            </div>
+            @*= Clear floats =*@
+            <div class="clear"></div>
+        </li>
+        <li id="home_healthgallery" class="single">
+            @*== title and icon ==*@
+            <div class="icon_and_title">
+                <a href="/SeasonalDisease/index">
+                    <img src="~/Images/reminders.png" class="feature_icon" />
+                    <h4>Health Gallery</h4>
+                </a>
+                @*= Clear floats =*@
+                <div class="clear"></div>
+            </div>
+            <div class="desc_feature">
+                <p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="link_feature">
+                @Html.ActionLink("See", "dummy", null, new { href = "#" })
+            </div>
+            @*= Clear floats =*@
+            <div class="clear"></div>
+        </li>
+        <li id="home_services" class="single">
+            @*== title and icon ==*@
+            <div class="icon_and_title">
+                <img src="~/Images/services.png" class="feature_icon" />
+                <h4>Services</h4>
+                @*= Clear floats =*@
+                <div class="clear"></div>
+            </div>
+            <div class="desc_feature">
+                <p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="link_feature">
+                @Html.ActionLink("Search", "dummy", null, new { href = "#" })
+            </div>
+            @*= Clear floats =*@
+            <div class="clear"></div>
+        </li>
+    </ul>
+    @*empty div to clear floats*@
+    <div class="clear"></div>
+</div>
+
+@*== Script for rotating news feed ==*@
+@section Scripts{
+    @Scripts.Render("~/Scripts/custom/news_feed.js")
+}

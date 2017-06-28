@@ -1,0 +1,88 @@
+﻿@model SJGH_Project.Models.CreateDoctorModel
+
+@{
+    ViewBag.Title = "Admin Create Doctor";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    
+
+    //Create a list of departments for the department dropdownlist
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Please selete",
+        Value = "",
+        Selected = true
+    });
+    foreach (var item in ViewBag.DepartmentList)
+    {
+        listItems.Add(new SelectListItem
+        {
+            Text = item,
+            Value = item
+        });
+    }
+}
+
+<h2>Admin Create Doctor</h2>
+
+<div id="log_form">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <fieldset>
+            <legend>New doctor information</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Department)
+                    @Html.DropDownListFor(m => m.Department, listItems)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.TextBoxFor(m => m.Phone)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Specialty)
+                    @Html.TextAreaFor(m => m.Specialty)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Bio)
+                    @Html.TextAreaFor(m => m.Bio)
+                </li>
+            </ol>
+            <input type="button" value="Cancel" onclick="javascript:document.location.href='@Url.Action("ListDoctor", "AdminUser")'" />
+            <input type="submit" value="Create" />
+        </fieldset>
+    }
+</div>
+@*Empty divs to clear floats*@
+<div class="clear"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

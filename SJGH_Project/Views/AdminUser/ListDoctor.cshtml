@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SJGH_Project.Models.Doctor>
+
+@{
+    ViewBag.Title = "Admin Doctors List";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/scStyle.css" type="text/css" rel="stylesheet" />
+}
+
+<h2>Doctors List</h2>
+
+@Html.ActionLink("Create new doctor", "CreateDoctor", "AdminUser", new { @class = "action-link-btn" })
+
+<table class="user-list-table">
+    <tr class="user-list-tr">
+        <td class="user-list-td user-list-header">USERNAME</td>
+        <td class="user-list-td user-list-header">DEPARTMENT</td>
+        <td class="user-list-td user-list-header">NAME</td>
+        <td class="user-list-td user-list-header">EMAIL</td>
+        <td class="user-list-td user-list-header">PHONE</td>
+        <td class="user-list-td user-list-header">STATUS</td>
+        <td class="user-list-td user-list-header">DETAIL</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr class="user-list-tr">
+            <td class="user-list-td user-list-td-blue">@x.username</td>
+            <td class="user-list-td">@x.department_name</td>
+            <td class="user-list-td user-list-td-blue">@x.lastname, @x.firstname</td>
+            <td class="user-list-td">@x.email</td>
+            <td class="user-list-td user-list-td-blue">@x.phone</td>
+            @{
+        string isActive;
+        if (x.status == 1)
+        {
+            isActive = "Enable";
+        }
+        else
+        {
+            isActive = "Disable";
+        }
+            }
+            <td class="user-list-td">@isActive</td>
+            <td class="user-list-td user-list-td-blue">
+                @Html.ActionLink("View Detail", "DoctorDetail", new { id = x.doctor_id })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,41 @@
+﻿@model SJGH_Project.Models.NeewFeed
+
+@{
+    ViewBag.Title = "Delete News: " + @Model.headline;
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Delete News Entry</h2>
+
+<ul id="list_of_news">
+
+    @*==Generate clickable news title with img thumb and date==*@
+    <li>
+        @*== Entry Date (display Name of Month in a user friendly way) ==*@
+        <time class="news_entry_date"><span class="day">@Model.date.Day</span> <span class="month">@Model.date.ToString("MMMM")</span> <span class="year">@Model.date.Year</span></time>
+
+        @*== emty div to clear floats==*@
+        <div class="clear"></div>
+
+        @*== News Box ==*@
+        <div class="news_box">
+            <img class="news_thumb" src='@Url.Content(Model.photo_url)' alt="news thumbnail" width="200" height="100" />
+            @Html.ActionLink(Model.headline, "NewsPage", "NewsFeed", new { id = Model.news_id }, null)
+        </div>
+
+        @*== emty div to clear floats==*@
+        <div class="clear"></div>
+    </li>
+    <li id="delete_buttons">
+        <p id="warning">Are you sure you want to delete this record?</p>
+
+        @using (Html.BeginForm())
+        {
+            @*== Input Buttons ==*@
+            <input type="button" value="Cancel" onclick="javascript:document.location.href='@Url.Action("Index", "NewsFeedCMS")'" />
+            <input type="submit" value="Delete News" />
+
+        }
+    </li>
+</ul>
+

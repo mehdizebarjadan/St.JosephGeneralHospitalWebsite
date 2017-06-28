@@ -1,0 +1,164 @@
+﻿@model SJGH_Project.Models.UpdatePatientModel
+
+@{
+    ViewBag.Title = "Update Patient";
+
+    List<SelectListItem> statusListItems = new List<SelectListItem>();
+    if (Model.Status == 0)
+    {
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Disable",
+            Value = "0",
+            Selected = true
+        });
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Enable",
+            Value = "1"
+        });
+    }
+    else
+    {
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Disable",
+            Value = "0"
+        });
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Enable",
+            Value = "1",
+            Selected = true
+        });
+    }
+
+
+    List<SelectListItem> ProvinceListItems = new List<SelectListItem>();
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Please select",
+        Value = ""
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Alberta",
+        Value = "AB",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "British Columbia",
+        Value = "BC",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Manitoba",
+        Value = "MB",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "New Brunswick",
+        Value = "NB",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Newfoundland",
+        Value = "NL",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Nova Scotia",
+        Value = "NS",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Ontario",
+        Value = "ON",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "PEI",
+        Value = "PE",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Quebec",
+        Value = "QC",
+    });
+    ProvinceListItems.Add(new SelectListItem
+    {
+        Text = "Saskatchewan",
+        Value = "SK",
+    });
+    
+    foreach(var province in ProvinceListItems){
+        if (province.Value == Model.Province)
+        {
+            province.Selected = true;
+        }
+    }
+}
+
+<h2>Update Patient</h2>
+
+<div id="log_form">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <fieldset>
+            <legend>Patient information</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.HealthCard)
+                    @Html.TextBoxFor(m => m.HealthCard)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.DoB)
+                    @Html.TextBoxFor(m => m.DoB, new { @type = "date", @Value = Model.DoB.ToString("yyyy-MM-dd") })
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.TextBoxFor(m => m.Phone)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Address)
+                    @Html.TextBoxFor(m => m.Address)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.City)
+                    @Html.TextBoxFor(m => m.City)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Province)
+                    @Html.DropDownListFor(m => m.Province, ProvinceListItems)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Postal)
+                    @Html.TextBoxFor(m => m.Postal)
+                </li>
+            </ol>
+            <input type="button" value="Cancel" onclick="javascript:document.location.href='@Url.Action("PatientProfile", "PatientAccount")'" />
+            <input type="submit" value="Update" />
+        </fieldset>
+    }
+</div>
+@*Empty divs to clear floats*@
+<div class="clear"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,1176 @@
+﻿
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* ============ Eric Meyer's Reset Ends ============= */
+
+/* ============ General Css (From mockup last semester) ============= */
+
+body {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.24;
+    background: #E4F2FD;
+}
+
+/*size of the site 960px*/
+#wrapper {
+    width: 960px;
+    margin: auto;
+    background: white;
+    /* Box Shadows*/
+    -webkit-box-shadow: 3px 3px 3px 3px rgba(0,0,0,.1);
+    box-shadow: 3px 3px 3px 3px rgba(0,0,0,.1);
+}
+
+/*Headings*/
+
+h1 {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 170%;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 140%;
+    margin-bottom: 10px;
+}
+
+/* anchors*/
+
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+p{
+    margin-bottom: 10px;
+    font-size: 105%;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em{
+    font-style: italic;
+}
+/* CKEDITOR FIX*/
+#body_article img {
+    margin: 10px;
+}
+
+#body_article ol{
+    list-style-type:decimal;
+    padding-left: 60px;
+}
+
+#body_article ul{
+    list-style-type: initial;
+    padding-left: 60px;
+}
+
+#body_article h1,
+#body_article h2,
+#body_article h3,
+#body_article h4,
+#body_article h5,
+#body_article h6{
+    text-align:center;
+} 
+
+/* ====== FORMAT FOR DEFAULT FORMS LOGIN AND REGISTER  =========*/
+
+.validation-summary-errors {
+    color: red;
+}
+
+label {
+    display: block;
+    padding-bottom: 5px;
+    font-weight: bold;
+    color: #0065B3;
+}
+
+/* Inputs */
+input[type=text],
+input[type=password] {
+    height: 24px;
+    width: 90%;
+    font-size: 110%;
+    font-family: 'Open Sans', sans-serif;
+    /* Fix for error messages in login page*/
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type=submit],
+input[type=button] {
+    margin: 28px 5px 0 5px;
+    padding: 5px;
+    border: none;
+    background: #0065B3;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/*Buttons*/
+.action-link-btn {
+    padding: 5px;
+    border: none;
+    background: #0065B3;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+
+
+legend {
+    margin-bottom: 10px;
+}
+
+fieldset li {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+
+#log_form {
+    width: 50%;
+    float: left;
+}
+
+    #log_form form {
+        width: 100%;
+    }
+
+#register_link {
+    margin: 10px 0;
+}
+
+/* Images and description for page*/
+#form_img_desc {
+    float: right;
+    margin-right: 55px;
+}
+
+/* Fix for error messages in login page*/
+form li span span {
+    color: red;
+}
+/* ====== FORMAT FOR INPUTS ENDS  =========*/
+
+/*Clear Floats*/
+.clear {
+    clear: both;
+}
+
+
+
+/* ============ General Css ENDS ============= */
+/* ============ CSS PUBLIC TEMPLATE STARTS =====*/
+/* ========= Header =========== */
+
+header {
+    padding-top: 30px;
+    background: white;
+}
+
+#logo {
+    padding-left: 30px;
+}
+
+#site_title {
+    width: 290px;
+    float: left;
+}
+
+#logo_img {
+    float: left;
+    padding-right: 15px;
+    padding-top: 12px;
+}
+
+
+/*Span inside heading*/
+span#location {
+    display: block;
+    font-size: 50%;
+}
+
+/*Top Navigation*/
+#top_nav {
+    float: right;
+    font-size: 90%;
+    padding-right: 1%;
+}
+
+    #top_nav li {
+        float: left;
+        border-right: black solid thin;
+        padding: 5px;
+    }
+
+        #top_nav li a {
+            color: black;
+            display: block;
+            padding: 5px;
+            /*CSS3 Transition*/
+            -webkit-transition: all .3s ease-in;
+            -moz-transition: all .3s ease-in;
+            -ms-transition: all .3s ease-in;
+            -o-transition: all .3s ease-in;
+            transition: all .3s ease-in;
+        }
+
+            #top_nav li a:hover {
+                color: #0065B3;
+                background: rgba(128, 128, 128, .2);
+            }
+
+        #top_nav li:last-child {
+            border-right: none;
+        }
+
+/* CSS FOR TOP NAVIGATION WHEN logged in*/
+
+#logged_in {
+    height: 28px;
+    line-height: 28px;
+}
+
+    #logged_in a {
+        display: inline !important;
+        padding-top: 5px;
+    }
+/* == form for logout button  ==*/
+#logoutForm {
+    display: inline;
+}
+
+#address_and_phone {
+    display: block;
+    margin-top: 42px;
+    text-align: right;
+    padding: 5px;
+}
+
+
+#icons_map_menu {
+    clear: both;
+    float: right;
+    padding: 0 2px 0 2px;
+    margin-top: -15px;
+}
+
+
+
+
+/*== Main Navigation ==*/
+
+#toggle_menu_mobile {
+    display: none;
+}
+
+#main_nav {
+    clear: both;
+    margin-top: 20px;
+    position: relative;
+}
+
+#menu_items {
+    /* Fix for internet explorer*/
+    clear: both;
+    padding-left: 1px;
+}
+
+    #menu_items li.main_items {
+        float: left;
+        background: #0065B3;
+        width: 119px;
+        text-align: center;
+        border-right: white solid thin;
+        height: 35px;
+        font-size: 84%;
+        font-weight: 500;
+        overflow: hidden;
+    }
+
+        #menu_items li.main_items:last-child {
+            border-right: none;
+        }
+
+
+        #menu_items li.main_items a {
+            color: white;
+            display: block;
+            height: 35px;
+        }
+
+    #menu_items li.main_items_cms {
+        width: 191px;
+    }
+
+/* Centers vertically the one liners in menu*/
+.oneliner {
+    line-height: 35px;
+    height: 35px;
+}
+
+/* Pages and links for when main items are clicked*/
+
+#main_menu_item_page {
+    width: 50%;
+    float: left;
+}
+
+    #main_menu_item_page li {
+        /* enables Jquery effect*/
+        opacity: 0;
+        margin-bottom: 10px;
+        border: #CCCCCC solid thin;
+        width: 100%;
+        /* Rouded Corners*/
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+        #main_menu_item_page li a {
+            display: block;
+            font-size: 200%;
+            color: #0065B3;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+#main_item_photo {
+    float: right;
+}
+
+    #main_item_photo img {
+        display: block;
+    }
+
+
+/* Drop Menu Items*/
+.drop_menu {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    z-index: 9999;
+}
+
+#menu_items li:hover .drop_menu {
+    display: block;
+    opacity: 1;
+}
+
+
+
+.drop_menu li {
+    background: #00A692;
+    width: 119px;
+    border-bottom: white solid 1px;
+    /*CSS3 Transition*/
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+}
+
+
+    .drop_menu li:last-child {
+        border-bottom: none;
+    }
+
+    .drop_menu li:hover {
+        background: #008474;
+    }
+
+/*============== CONTENT RULES ==========*/
+
+#content {
+    padding: 10px;
+}
+
+/*============= Footer CSS =============*/
+footer {
+    background: #0D2341;
+    height: 160px;
+    color: white;
+    clear: both;
+}
+
+#foot_nav {
+    display: block;
+    padding-top: 50px;
+}
+
+    #foot_nav li {
+        float: left;
+        width: 20%;
+        text-align: center;
+        border-right: white solid 1px;
+        border-left: white solid 1px;
+        background: #0065B3;
+        margin-left: 38px;
+    }
+
+
+
+    #foot_nav a {
+        color: white;
+        display: block;
+    }
+
+#copyright {
+    clear: both;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 55px;
+}
+
+/* ============ CSS PUBLIC TEMPLATE ENDS =====*/
+
+/* ===== CSS PUBLIC PAGES START =====*/
+
+/* HOME PAGE CSS STARTS*/
+/* Hide necessary heading for section tag*/
+.seo {
+    text-indent: -9999px;
+}
+
+
+/* skeleton home features list*/
+#index_features li {
+    float: left;
+    margin-bottom: 25px;
+    border: #CCCCCC solid thin;
+    margin-right: 1%;
+    margin-left: 1%;
+    overflow: hidden;
+    /* Rouded Corners*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    /*Shadows for boxes*/
+    -webkit-box-shadow: 3px 3px 3px 3px rgba(204, 204, 204, 1);
+    box-shadow: 3px 3px 3px 3px rgba(204, 204, 204, 1);
+    /* position relative = it will created boundaries for absolute position elements inside lisrt*/
+    position: relative;
+}
+
+/*Inside feature boxes*/
+
+/*icon and title*/
+.feature_icon {
+    float: left;
+    margin-left: 5px;
+    margin-right: 5%;
+}
+
+/*feature description*/
+.desc_feature {
+    clear: both;
+}
+
+    .desc_feature p {
+        padding: 4%;
+    }
+
+.icon_and_title {
+    font-size: 140%;
+    font-weight: bold;
+    color: #0065B3;
+    line-height: 50px;
+    letter-spacing: 3px;
+    padding: 5px;
+}
+
+/*for news feed*/
+.double {
+    width: 64%;
+    height: 300px;
+}
+
+/*for the rest of the list*/
+.single {
+    width: 31%;
+    height: 200px;
+}
+
+#home_ertime {
+    height: 300px;
+}
+
+/*link button*/
+.link_feature {
+    width: 30%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    float: right;
+    margin-right: 3%;
+    /* CSS3 Gradients*/
+    background: #7db9e8; /* Old browsers */
+    background: -moz-linear-gradient(top, #7db9e8 -1%, #7db9e8 0%, #7db9e8 7%, #2989d8 50%, #207cca 51%, #1e5799 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(-1%,#7db9e8), color-stop(0%,#7db9e8), color-stop(7%,#7db9e8), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #7db9e8 -1%,#7db9e8 0%,#7db9e8 7%,#2989d8 50%,#207cca 51%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #7db9e8 -1%,#7db9e8 0%,#7db9e8 7%,#2989d8 50%,#207cca 51%,#1e5799 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #7db9e8 -1%,#7db9e8 0%,#7db9e8 7%,#2989d8 50%,#207cca 51%,#1e5799 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #7db9e8 -1%,#7db9e8 0%,#7db9e8 7%,#2989d8 50%,#207cca 51%,#1e5799 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+    /* Rouded Corners*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+    /*anchor for feature*/
+    .link_feature a {
+        display: block;
+        color: white;
+        font-weight: bold;
+    }
+
+/* HOME PAGE CSS ENDS*/
+
+
+
+
+/*== PATO SALAZAR ===*/
+/*News Feed Index Page*/
+.featured_news_box {
+    display: none;
+}
+
+
+.feature_photo {
+    display: block;
+    margin: auto;
+    /*== Allows responsiveness of featured image*/
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#home_newsfeed time,
+#home_newsfeed h3{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Headline*/
+#home_newsfeed h3 {
+    width: 95%;
+    top: 80%;
+    left: 1.5%;
+    padding: 5px;
+    background: rgba(0, 101, 179, .85);
+    /* for default h3 if not featured news are coming from DB*/
+    color: white;
+    text-align: center;
+}
+
+    /* Headline link*/
+    #home_newsfeed h3 a {
+        color: white;
+        display: block;
+    }
+
+/* Time*/
+#home_newsfeed time {
+    width: 60px;
+    height: 50px;
+    background: rgba(0, 101, 179, .85);
+    padding: 20px 5px 0 5px;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 70%;
+    font-weight: bold;
+}
+
+
+/*=== News Feed Index Page ENDS ===*/
+
+/* == List of News Page ==*/
+/* Title of the page*/
+
+h2#news_list {
+    text-align: center;
+}
+
+/*Unordered list holding the news list*/
+
+/* Individual news items*/
+#list_of_news li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+/* Individual Entry Date*/
+.news_entry_date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    display: block;
+    width: 112px;
+    background: rgba(0, 166, 146, .7);
+    color: white;
+    padding: 5px 5px 0 5px;
+}
+
+    .news_entry_date .year {
+        display: block;
+        text-align: center;
+    }
+
+#list_of_news li div.news_box {
+    /*Vertically centers news title*/
+    line-height: 100px;
+    border: rgba(0, 166, 146, .7) solid medium;
+    /* Rouded Corners*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/* Individual news images*/
+#list_of_news li img {
+    display: block;
+    float: left;
+    margin-right: 2%;
+    /* Rouded Corners*/
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+/* individual link*/
+#list_of_news li a {
+    display: block;
+    font-size: 150%;
+    color: #0065B3;
+    font-weight: bold;
+
+    /* Truncates string if there is not much space*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* == List of News Page ENDS ==*/
+/*== INDIVIDUAL NEWS ==*/
+
+article#featured,
+article#news{
+    width:80%;
+    margin: auto;
+}
+
+/* make block element and responsive*/
+#article_photo img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* edtermine witdh of by line and date*/
+article#featured h2#individual_news,
+article#news_list h2#individual_news,
+article#news h2#individual_news{
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+    color: #0065B3;
+    margin-bottom: 10px;
+}
+
+#byline,
+#individual_entry_date{
+    width: 95%;
+    text-align: right;
+    color: #00A692;
+    margin: auto;
+}
+
+    #byline #author {
+        font-weight: bold;
+
+    }
+
+    
+#individual_entry_date {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Body Article*/
+#body_article {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#back_to_newslist {
+    display: block;
+    text-align: right;
+}
+/*== INDIVIDUAL NEWS END ==*/ 
+
+/* ===================== CSS FOR CMS PAGES START =======================*/
+/*CMS Home Features List
+    ----------------------------------------------------------*/
+
+/*== Display features icons  ==*/
+.cmsfeatures li {
+    float: left;
+    margin: 10px;
+    padding: 25px 40px 10px 40px;
+    width: 14.3%;
+    display: block;
+    text-align: center;
+    border: #CCCCCC solid thin;
+    height: 128px;
+    /* round corners*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+    .cmsfeatures li a {
+        text-decoration: none;
+        display: block;
+        width: 100%;
+    }
+
+/*============= NEWS INDEX CMS  ==============*/
+
+/* ==== News Table for CMS ===*/
+.news-list-table {
+    margin: auto;
+    border: 1px solid #636363;
+}
+
+.news-list-td {
+    padding: 10px;
+    border-top: #06a994 solid 1px;
+    border-bottom: #06a994 solid 1px;
+    text-align: center;
+
+}
+
+#actions{
+    width: 100px;
+}
+
+.news-list-header {
+    font-weight: bold;
+    color: #ffffff;
+    background: #636363;
+}
+
+.news-list-td-blue {
+    background: #afd7f7;
+}
+
+#insert_news_link{
+    display: block;
+    text-align: right;
+    margin: 0 9px 20px 0;
+}
+
+/*== INSERT NEWS CMS ==*/
+
+#CMS form{
+    width: 75%;
+}
+
+#CMS input[type=date],
+#CMS select,
+#CMS input[type=text] {
+    height: 24px;
+    width: 100%;
+    font-size: 110%;
+}
+
+
+/*== DELETE ==*/
+#warning{
+    text-align:center;
+    font-size: 130%;
+    color: rgba(0, 101, 179, .85);
+}
+
+
+#delete_buttons form{
+    width: 500px;
+    margin: auto;
+    text-align:center;
+}
+
+
+/* ==== Doctor Table for CMS ===*/
+.doctor-list-table {
+    margin: 20px 0;
+    border: 1px solid #636363;
+}
+
+.doctor-list-td {
+    padding: 10px;
+}
+
+.doctor-list-header {
+    font-weight: bold;
+    color: #ffffff;
+    background: #636363;
+}
+
+.doctor-list-td-blue {
+    background: #afd7f7;
+}
+
+.doctor-detail-li {
+    padding: 10px;
+}
+
+/*== CMS Footer ==*/
+#CMS .float-left p {
+    /*putting footer line in the bottom right*/
+    padding: 120px 10px 0 10px;
+    text-align: right;
+}
+
+/*CSS CMS ENDS*/
+/*====================================================*/
+/* RESPONSIVE DESIGN AND CSS3 MEDIA QUERIES START**/
+
+/*Ipad on portrait*/
+
+@media all and (max-width: 980px) {
+    /*General layout*/
+    #wrapper {
+        width: 100%;
+        font-size: 90%;
+    }
+
+    #menu_items {
+        margin-top: -3%;
+    }
+
+        #menu_items li:hover .drop_menu {
+            display: none;
+        }
+
+    #logo {
+        padding-left: 1%;
+    }
+
+    #site_title {
+        width: 35%;
+    }
+
+    #logo_img {
+        padding-right: 1%;
+    }
+
+
+    /*Register page and login*/
+
+    /*Responsive Image*/
+
+    #form_img_desc {
+        width: 40%;
+    }
+
+    .image_log_def {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    #menu_items li.main_items {
+        width: 12.3%;
+    }
+
+    /* Pages and links for when main items are clicked*/
+    #main_menu_item_page {
+        width: 100%;
+        float: none;
+    }
+
+        #main_menu_item_page li {
+            margin-bottom: 10px;
+        }
+
+            #main_menu_item_page li a {
+                padding: 5px;
+                text-align: center;
+            }
+
+    #main_item_photo {
+        display: none;
+    }
+
+
+    /*Footer*/
+    footer {
+        height: auto;
+    }
+
+
+    #foot_nav li {
+        width: 24.6%;
+        margin-left: 0;
+    }
+
+    /*== Responsive home page ==*/
+    #index_features li {
+        font-size: 95%;
+        margin-right: .7%;
+        margin-left: .7%;
+    }
+
+    /*for news feed*/
+    .double {
+        width: 98%;
+    }
+
+    /*for the rest of the list*/
+    .single {
+        width: 47.75%;
+    }
+
+    /*== normalize size of Er time box ==*/
+    #home_ertime {
+        height: 200px;
+    }
+
+    /*== It won't display services icon for ipad and iphone ==*/
+    #home_services {
+        display: none;
+    }
+}
+/* End  media query 980*/
+
+
+/* cell phone on portrait*/
+@media all and (max-width: 600px) {
+    /* General CSS*/
+    header {
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    #toggle_menu_mobile {
+        display: inline;
+        cursor: pointer;
+    }
+
+    .address {
+        float: right;
+    }
+
+    #menu_items {
+        display: none;
+    }
+
+        /*Menu mobile*/
+        #menu_items li.main_items {
+            float: none;
+            width: 100%;
+            border-bottom: white solid thin;
+            border-right: none;
+        }
+
+
+
+        #menu_items li a {
+            line-height: 35px;
+            font-weight: bold;
+        }
+
+
+    #address_and_phone {
+        display: none;
+    }
+
+    /* Top Menu*/
+
+    .no_mobile {
+        display: none;
+    }
+
+    .login_mobile {
+        border-right-width: 0px !important;
+        color: #0065B3;
+        background: rgba(128, 128, 128, .2);
+        margin-right: 5px;
+    }
+
+    /* CSS FOR TOP NAVIGATION WHEN logged in Mobile*/
+
+    #logged_in {
+        height: auto;
+        line-height: inherit;
+        border-right-width: 0px !important;
+        text-align: center;
+    }
+
+        #logged_in a {
+            display: block;
+            padding-top: 5px;
+        }
+    /* == form for logout button  ==*/
+    #logoutForm {
+        display: block;
+        margin-top: 7px;
+    }
+
+
+
+
+    /*Register page and login*/
+
+    /*Responsive Image*/
+
+    #form_img_desc {
+        display: none;
+    }
+
+    #log_form {
+        width: 100%;
+    }
+
+    /*Footer*/
+
+    #foot_nav {
+        width: 80%;
+        margin: auto;
+        padding-top: 30px;
+        overflow: hidden;
+    }
+
+        #foot_nav li {
+            float: none;
+            width: 100%;
+            margin-left: 0;
+            border: none;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+    #copyright {
+        font-size: 65%;
+        margin-top: 5px;
+    }
+
+    /*== Home Page for Cellphone ==*/
+
+    #content {
+        padding-top: 190px;
+    }
+
+    #home_newsfeed {
+        display: none;
+    }
+
+    #list_of_features li {
+        float: none;
+        width: 100%;
+    }
+
+    /* PATO  NEWS FEED FEATURE*/
+    /* LIST OF NEWS*/
+    /*List of News Page*/
+
+
+/* Individual Entry Date*/
+.news_entry_date {
+    position: static;
+    float: right;
+
+}
+
+    .news_entry_date .year {
+        display: block;
+        text-align: center;
+    }
+
+#list_of_news li div.news_box {
+    /*Vertically centers news title*/
+    line-height: 1.34;
+    padding-top: 2px;
+
+}
+
+
+
+/* Individual news images*/
+#list_of_news li img {
+    display: block;
+    float: none;
+    margin: auto;
+}
+
+/* individual link*/
+#list_of_news li a {
+    display: block;
+    text-align: center;
+
+    /* Truncates string if there is not much space*/
+    white-space: pre-wrap;
+    overflow: hidden ;
+    text-overflow: clip;
+}
+}
+/* End  media query 600px*/
+

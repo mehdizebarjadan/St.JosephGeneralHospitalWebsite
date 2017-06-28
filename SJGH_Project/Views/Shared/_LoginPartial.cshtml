@@ -1,0 +1,39 @@
+﻿@if (Request.IsAuthenticated)
+{
+    string userRole = "";
+    //if (Roles.GetRolesForUser(User.Identity.Name).Length != 0)
+    //{
+    //    userRole = Roles.GetRolesForUser(User.Identity.Name)[0];
+    //}
+    <ul>
+        <li id="logged_in">
+            Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+                @*@if (userRole == "patient")
+                {
+                    @Html.ActionLink(User.Identity.Name, "Index", "PatientAccount", routeValues: null, htmlAttributes: new { @class = "username", title = "Patients" })<text>!</text>
+                }
+                else if (userRole == "doctor")
+                {
+                    @Html.ActionLink(User.Identity.Name, "Index", "DoctorAccount", routeValues: null, htmlAttributes: new { @class = "username", title = "Doctors" })<text>!</text>
+                }*@
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            }
+        </li>
+        <li class="no_mobile">@Html.ActionLink("About", "dummy", null, new { href = "#" }) @*This is a dummy link*@</li>
+        <li class="no_mobile">@Html.ActionLink("Privacy Policy", "dummy", null, new { href = "#" }) @*This is a dummy link*@</li>
+    </ul>
+  
+}
+else
+{
+    <ul>
+        <li class="no_mobile">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="login_mobile">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li class="no_mobile">@Html.ActionLink("About", "dummy", null, new { href = "#" }) @*This is a dummy link*@</li>
+        <li class="no_mobile">@Html.ActionLink("Privacy Policy", "dummy", null, new { href = "#" }) @*This is a dummy link*@</li>
+
+    </ul>
+}

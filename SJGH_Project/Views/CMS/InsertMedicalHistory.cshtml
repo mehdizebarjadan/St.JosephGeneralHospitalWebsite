@@ -1,0 +1,62 @@
+﻿@model SJGH_Project.Models.Medical_History
+
+@{
+    ViewBag.Title = "InsertMedicalHistory";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+
+    List<SelectListItem> doctords = new List<SelectListItem>();
+    doctords.Add(new SelectListItem
+    {
+        Text = "Please select",
+        Value = "",
+        Selected = true
+    });
+    foreach (var doctor in ViewBag.Doctors as IEnumerable<SJGH_Project.Models.Doctor>)
+    {
+        doctords.Add(new SelectListItem
+        {
+            Text = doctor.firstname + " " + doctor.lastname,
+            Value = doctor.doctor_id.ToString()
+        });
+    }
+}
+
+<h2>Insert Medical History</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Medical History</legend>
+
+        @Html.HiddenFor(x => x.patient_id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.doctor_id)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.doctor_id, doctords)
+            @Html.ValidationMessageFor(model => model.doctor_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.description, new { @class = "desc-textarea" })
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "MedicalHistory", new { id = Model.patient_id})
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - SJGH</title>
+
+    @*Metatag for favicon*@
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @*Metatag for Google FOnts*@
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    @*Metatag for media queries*@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @*Bundles and CSS*@
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @* Render sectiions for adding individual stylesheet *@
+    @* Siwen Cen's stylesheet *@
+    @RenderSection("scStyles", false)
+
+    @* === HTML SHIV ===*@
+    <!--[if IE]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @*== Google Hosted Jquery ==*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    @*==Javascript for navigation ==*@
+    <script src="~/Scripts/custom/navigation.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        @*=== HEADER STARTS ===*@
+        <header>
+            @* ====== section logo =======*@
+            <div id="logo">
+                <a id="logo_img" href="@Url.Action("Index", "Home")"><img src="~/Images/logo.png" /></a>
+
+                <h1 id="site_title">ST. JOSEPH'S HOSPITAL <span id="location">Elliot Lake</span></h1>
+
+                @*== Adding Partial View with login and register ==*@
+                <nav id="top_nav">
+                    <div class="log_partial">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+
+                </nav>
+
+            </div>
+            @*Address and phone line*@
+            <div id="address_and_phone">
+                <p class="phone">70 Spine Rd. Elliot Lake, ON P5A | (705) 848-7181</p>
+               
+            </div>
+            @*empty div to clear floats*@
+            <div class="clear"></div>
+
+            @*Icons for map and menu*@
+            <div id="icons_map_menu">
+                <p class="address"><span id="toggle_menu_mobile"><img src="~/Images/hamburger-menu-50.png" width="40" height="40" /></span><span><a id="logo_map" href="@Url.Action("Index", "Home")"><img src="~/Images/googlemapicon.png" width="40" height="40" /></a></span></p>
+               
+            </div>
+            @*empty div to clear floats*@
+            <div class="clear"></div>
+            <nav id="main_nav">
+                @*empty div to clear floats*@
+                <div class="clear"></div>
+                <ul id="menu_items">
+                    <li class="main_items oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
+                    <li class="main_items twoliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Patients and Visitors", "Index", "Home")
+
+                        @*== Drop Menu Item ==*@
+                        <ul class="drop_menu">
+                            <li class="oneliner">@Html.ActionLink("News Feed", "Index", "NewsFeed") </li>
+                            <li class="oneliner">@Html.ActionLink("General Info", "dummy", null, new { href = "#" }) </li>
+                            <li class="oneliner">@Html.ActionLink("Patients", "Index", "PatientAccount") </li>
+                            <li class="oneliner">@Html.ActionLink("Patient OR status", "dummy", null, new { href = "#" }) </li>
+                            <li class="oneliner">@Html.ActionLink("Find Physician", "dummy", null, new { href = "#" }) </li>
+                            <li class="oneliner">@Html.ActionLink("Visitors", "dummy", null, new { href = "#" }) </li>
+                            <li class="oneliner">@Html.ActionLink("Online Gift Shop", "dummy", null, new { href = "#" }) </li>
+                        </ul>
+                    </li>
+                    <li class="main_items twoliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Services and Departments", "Index", "Home")
+
+                        @*== Drop Menu Item ==*@
+                        <ul class="drop_menu">
+                            <li class="oneliner">@Html.ActionLink("Quick Search", "dummy", null, new { href = "#" }) </li>
+                        
+
+                        </ul>
+                    </li>
+                    <li class="main_items oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Facilities", "Index", "Home")
+
+                        @*== Drop Menu Item ==*@
+                        <ul class="drop_menu">
+                            <li>@Html.ActionLink("Oaks Center", "dummy", null, new { href = "#" }) </li>
+                            <li>@Html.ActionLink("SJGH Manor ", "dummy", null, new { href = "#" }) </li>
+
+                        </ul>
+                    </li>
+                    <li class="main_items oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Opportunities", "Index", "Home")
+
+                        <ul class="drop_menu">
+                            <li>@Html.ActionLink("Jobs", "dummy", null, new { href = "#" }) </li>
+                            <li>@Html.ActionLink("Volunteering ", "dummy", null, new { href = "#" }) </li>
+
+                        </ul>
+                    </li>
+                    <li class="main_items oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Donations","Index", "Home")
+                    </li>
+                    <li class="main_items oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Contacts", "Index", "Home")
+                    </li>
+                    <li class="main_items oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Resources", "Index", "Home")
+                    </li>
+                </ul>
+                @*empty div to clear floats*@
+                <div class="clear"></div>
+            </nav>
+        </header>
+        @*=== HEADER ENDS ===*@
+        <section id="content">
+            @* ===THIS IS WHAT IS GOING TO GET RENDERED IN THE INDIVUDUAL VIEWS=== *@
+
+            @RenderBody()
+
+            @* ===END OF THIS SECTION=== *@
+        </section>
+        @*empty div to clear floats*@
+        <div class="clear"></div>
+        @*== FOOTER STARTS ==*@
+        <footer>
+            @*Footer links*@
+            <nav id="footer_nav">
+                <ul id="foot_nav">
+                    <li>@Html.ActionLink("Donations ", "dummy", null, new { href = "#" })</li>
+                    <li>@Html.ActionLink("Online Gift Shop ", "dummy", null, new { href = "#" })</li>
+                    <li>@Html.ActionLink("Map ", "dummy", null, new { href = "#" })</li>
+                    <li>@Html.ActionLink("Contact ", "dummy", null, new { href = "#" })</li>
+
+                    @* Empty div that clear floats*@
+                    <div class="clear"></div>
+                </ul>
+               
+            </nav>
+            
+            @* == copyright ==*@
+            <p id="copyright">Copyright &copy; @DateTime.Now.Year St.Joseph General Hospital - All rights reserved</p>
+        </footer>
+        @*== FOOTER ENDS ==*@
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

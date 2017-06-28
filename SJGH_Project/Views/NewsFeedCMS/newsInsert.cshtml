@@ -1,0 +1,77 @@
+﻿@model SJGH_Project.Models.NeewFeed
+
+@{
+    ViewBag.Title = "Insert News";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    
+}
+
+<h2>Insert News</h2>
+
+@using (Html.BeginForm("newsInsert", "NewsFeedCMS", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary();
+    <fieldset>
+        <legend>* means required</legend>
+        <ul>
+            <li>
+                @*== News Title ==*@
+                @Html.LabelFor(model => model.headline)
+                @Html.TextBoxFor(model => model.headline)
+                @Html.ValidationMessageFor(model => model.headline)
+            </li>
+            <li>
+                @*== News body  ==*@
+                @Html.LabelFor(model => model.body)
+                @Html.TextAreaFor(model => model.body, new { @id = "ckeditor" })
+                <script type="text/javascript">CKEDITOR.replace("body")</script>
+                @Html.ValidationMessageFor(model => model.body)
+            </li>
+            <li>
+                @Html.LabelFor(model => model.date)
+                @*== Gives admin current time for news news when creating news and shows an HtML 5 date picker. If HTML5 is not supported, it will display a textbox with date coming from DB ==*@
+                @Html.TextBoxFor(model => model.date, new { @type = "date", @Value = System.DateTime.Now.ToString("yyyy-MM-dd") })
+                @Html.ValidationMessageFor(model => model.date)
+            </li>
+            <li>
+                @*== Author ==*@
+                @Html.LabelFor(model => model.author)
+                @Html.TextBoxFor(model => model.author)
+            </li>
+            <li>
+                @*== Publish Dropdown list ==*@
+                @Html.LabelFor(model => model.published)
+                @Html.DropDownListFor(model => model.published, new[] {
+                new SelectListItem() {Text = "yes", Value = "yes"},
+                new SelectListItem() {Text = "no", Value = "no"}
+           })
+            </li>
+            <li>
+                @*== Photo field ==*@
+                @Html.LabelFor(model => model.photo_url)
+                <input name="file" type="file" />
+                @Html.ValidationMessageFor(model => model.photo_url)
+            </li>
+            <li>
+                @*== RAdio Button List for category ==*@
+                @Html.LabelFor(model => model.category)
+                @Html.RadioButtonFor(model => model.category, "news") news
+                @Html.RadioButtonFor(model => model.category, "featured") featured
+                @Html.ValidationMessageFor(model => model.category)
+            </li>
+            <li>
+                @*== Input Buttons ==*@
+                <input type="button" value="Cancel" onclick="javascript:document.location.href='@Url.Action("Index", "NewsFeedCMS")'" />
+                <input type="submit" value="Insert News" />
+            </li>
+        </ul>
+    </fieldset>
+}
+
+@*== Scripts for Validation ==*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    }

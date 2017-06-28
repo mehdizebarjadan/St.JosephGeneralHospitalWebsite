@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SJGH_Project.Models.NeewFeed>
+
+
+@{
+    if(!Model.Any())
+    {
+        @*== If there is nothing coming from Database this will be the default ==*@
+        <div id="no_featured_news">
+
+            @*== Image for Featured News. Dinamically generated title tag for accesibilty purposes ==*@
+            <img class="feature_photo"  src='@Url.Content("~/Images/NewsFeed/no_featured.jpg")' alt="featured photo" title='Welcome to the SJGH Website' />
+
+            @*== Friendly Formatted Date of news. In case of no news coming
+                The date will be the current one ==*@
+            <time class="feature_date"><span class="day">@DateTime.Now.Day</span> <span class="month">@DateTime.Now.ToString("MMMM")</span> <span class="year">@DateTime.Now.Year</span></time>
+
+            @*== Headline ==*@
+            <h3 class="featured_headline">@Html.ActionLink("Hospital News", "Index", "NewsFeed")</h3>
+        </div>
+
+
+    }
+    else
+    {
+        @*== Else meaning there is data coming from DB ==*@
+        @*== for each loop that creates the list of featured news for home page ==*@
+
+        foreach (var x in Model)
+        {
+            <div class="featured_news_box">
+
+                @*== Image for Featured News. Dinamically generated title tag for accesibilty purposes ==*@
+                <img class="feature_photo" src='@Url.Content(x.photo_url)' alt="featured photo" title='@x.headline' />
+
+                @*== Friendly Formatted Date of news ==*@
+                <time class="feature_date"><span class="day">@x.date.Day</span> <span class="month">@x.date.ToString("MMMM")</span> <span class="year">@x.date.Year</span></time>
+
+                @*== Headline ==*@
+                <h3 class="featured_headline">@Html.ActionLink(x.headline, "NewsPage", "NewsFeed", new { id = x.news_id }, null)</h3>
+                
+            </div>
+        }
+
+    }
+}
+
+
+

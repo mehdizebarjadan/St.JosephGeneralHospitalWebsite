@@ -1,0 +1,99 @@
+﻿@model SJGH_Project.Models.CreateAppointmentModel
+
+@{
+    ViewBag.Title = "Create Appointment";
+
+    List<SelectListItem> doctorList = new List<SelectListItem>();
+    doctorList.Add(new SelectListItem{
+        Text = "Please select",
+        Value = "",
+        Selected = true
+    });
+    foreach(var doctor in ViewBag.doctorList as IEnumerable<SJGH_Project.Models.Doctor>){
+        doctorList.Add(new SelectListItem{
+           Text = doctor.lastname + ", " + doctor.firstname,
+           Value = doctor.doctor_id.ToString() 
+        });
+    }
+
+    List<SelectListItem> locationList = new List<SelectListItem>();
+    locationList.Add(new SelectListItem
+    {
+        Text = "Please select",
+        Value = "",
+        Selected = true
+    });
+    foreach (var location in ViewBag.locationList as IEnumerable<SJGH_Project.Models.Location>)
+    {
+        locationList.Add(new SelectListItem
+        {
+            Text = location.name,
+            Value = location.location_id.ToString()
+        });
+    }
+
+    List<SelectListItem> timeList = new List<SelectListItem>();
+    timeList.Add(new SelectListItem
+    {
+        Text = "Please select",
+        Value = "",
+        Selected = true
+    });
+    string[] times = new string[] { "9:00AM", "9:15AM", "9:30AM", "9:45AM", "10:00AM", "10:15AM", "10:30AM", "10:45AM", 
+     "11:00AM", "11:15AM", "11:30AM", "11:45AM", "12:00PM", "12:15PM", "12:30PM", "12:45PM", "1:00PM", "1:15PM", "1:30PM", "1:45PM"
+    , "2:00PM", "2:15PM", "2:30PM", "2:45PM", "3:00PM", "3:15PM", "3:30PM", "3:45PM", "4:00PM", "4:15PM", "4:30PM", "4:45PM"
+    , "5:00PM", "5:15PM", "5:30PM", "5:45PM"};
+    for (int i = 0; i < times.Length; i++)
+    {
+        timeList.Add(new SelectListItem
+        {
+            Text = times[i],
+            Value = times[i]
+        });
+    }
+}
+
+@section scStyles{
+    <link href="~/Content/scThemes/scStyle.css" type="text/css" rel="stylesheet" />
+}
+
+<h2>Create Appointment</h2>
+
+@if (!ViewBag.available)
+{
+    <p style="color:red">Doctor is not available on the date and time selected.</p>
+}
+
+
+<div id="log_form">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        
+        <ol>
+            <li class="app-list-li">
+                @Html.LabelFor(m => m.doctorId)
+                @Html.DropDownListFor(m => m.doctorId, doctorList)
+            </li>
+            <li class="app-list-li">
+                @Html.LabelFor(m => m.locatioId)
+                @Html.DropDownListFor(m => m.locatioId, locationList)
+            </li>
+            <li class="app-list-li">
+                @Html.LabelFor(m => m.date)
+                @Html.TextBoxFor(m => m.date, new { @type = "date" })
+            </li>
+            <li class="app-list-li">
+                @Html.LabelFor(m => m.time)
+                @Html.DropDownListFor(m => m.time, timeList)
+            </li>
+            <li class="app-list-li">
+                @Html.LabelFor(m => m.additoinInfo)
+                @Html.TextAreaFor(m => m.additoinInfo)
+            </li>
+            <li class="app-list-li">
+                <input type="submit" value="Submit" />
+            </li>
+        </ol>
+    }
+</div>

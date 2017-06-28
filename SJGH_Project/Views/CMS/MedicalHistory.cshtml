@@ -1,0 +1,96 @@
+﻿@*@model List<SJGH_Project.Models.Medical_History>*@
+@model PagedList.IPagedList<SJGH_Project.Models.Medical_History>
+
+@{
+    ViewBag.Title = "MedicalHistory";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+<h2>Medical History</h2>
+<div class="addnew-container">
+    @Html.ActionLink("Add Medical History", "InsertMedicalHistory", new { id = @ViewBag.Patient.patient_id })
+</div>
+<div class="patientname-container">
+    <span>Patient Name: </span>
+    <span>@ViewBag.Patient.firstname</span>
+    <span>@ViewBag.Patient.lastname</span>
+</div>
+<div class="list-container">
+    <table>
+        <thead>
+            <tr>
+                <td>Doctor Name</td>
+                <td>Date</td>
+                <td>Description</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count < 1)
+            {
+                <tr>
+                    <td colspan="5">There is no history for selected patient!</td>
+                </tr>
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <span>@item.Doctor.firstname</span>
+                        <span>@item.Doctor.lastname</span>
+                    </td>
+                    <td>@item.date.ToString("d")</td>
+                    <td>@Html.Raw(item.description.Replace(Environment.NewLine, "<br/>"))</td>
+                    <td>@Html.ActionLink("Edit", "EditMedicalHistory", new { id = item.history_id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteMedicalHistory", new { id = item.history_id }, new {@class="delete-history"})</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="paging-container">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+
+        @if (Model.HasPreviousPage)
+        {
+            @Html.ActionLink("<<", "MedicalHistory", new {id = @ViewBag.Patient.patient_id, page = 1})
+            @Html.Raw(" ")
+            @Html.ActionLink("< Prev", "MedicalHistory", new {id = @ViewBag.Patient.patient_id, page = Model.PageNumber - 1})
+        }
+        else{
+            @:<<
+            @Html.Raw(" ")
+            @:< Prev
+        }
+        @for (int i = 1; i <= Model.PageCount; i++ )
+        {
+            if (Model.PageNumber == i)
+            {
+                @Html.Raw("(" + i.ToString() + ")")
+            }
+            else{
+                @Html.ActionLink(i.ToString(), "MedicalHistory", new {id = @ViewBag.Patient.patient_id, page = i})
+            }
+            @Html.Raw(" ")
+        }
+        @if (Model.HasNextPage)
+        {
+            @Html.ActionLink("Next >", "MedicalHistory", new {id = @ViewBag.Patient.patient_id, page = Model.PageNumber + 1})
+            @Html.Raw(" ")
+            @Html.ActionLink(">>", "MedicalHistory", new {id = @ViewBag.Patient.patient_id, page = Model.PageCount})
+        }
+        else
+        {  
+            @:Next >
+            @Html.Raw(" ")
+            @:>>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".delete-history").click(function (e) {
+            return confirm("Are you sure you want to delete selected record?");
+        });
+    });
+</script>

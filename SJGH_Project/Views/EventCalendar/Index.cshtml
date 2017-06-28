@@ -1,0 +1,79 @@
+﻿@model PagedList.IPagedList<SJGH_Project.Models.Event_Calendar>
+
+@{
+    ViewBag.Title = "Event Calendar";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/Mehdi.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Event Calendar</h2>
+<div class="detail-container">
+    @foreach (var item in Model)
+    {
+        <div class="detail-item-container">
+            <div class="detail-img-container">
+                @if (item.image_url != null && item.image_url != "")
+                {
+                    <img src="~/Uploads/EventCalendar/@item.image_url" width="250px" />
+                }
+                else{
+                    <img src="~/Images/no_image-512.png" width="250px" />
+                }
+            </div>
+            <div class="detail-text-container">
+                <div class="text-bold">@Html.DisplayFor(x => item.name)</div>
+                <br />
+                <div><span class="text-bold">Where</span><br /><span>@Html.DisplayFor(x => item.Location.name)</span></div>
+                <div><span class="text-bold">When</span><br /><span>@Html.DisplayFor(x => item.start_date)</span>@Html.Raw(" - ")<span>@Html.DisplayFor(x => item.start_time)</span></div>
+                <div><span>@Html.DisplayFor(x => item.end_date)</span>@Html.Raw(" - ")<span>@Html.DisplayFor(x => item.end_time)</span></div>
+                <br />
+                <div><span class="text-bold">Description</span><br /><span>@Html.Raw(Html.DisplayFor(x => item.description))</span></div>
+            </div>
+        </div>
+        <hr class="clear-float" />
+    }
+</div>
+<div class="paging-container">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { page = 1 })
+        @Html.Raw(" ")
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1 })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ")
+        @:< Prev
+        }
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+        if (Model.PageNumber == i)
+        {
+        @Html.Raw("(" + i.ToString() + ")")
+        }
+        else
+        {
+        @Html.ActionLink(i.ToString(), "Index", new { page = i })
+        }
+        @Html.Raw(" ")
+    }
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
+        @Html.Raw(" ")
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+    }
+    else
+    {  
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+        }
+</div>

@@ -1,0 +1,25 @@
+﻿@model SJGH_Project.Models.ShowPatientAppointmentModel
+
+@{
+    ViewBag.Title = "Appointment Detail";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/scStyle.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Appointment Detail</h2>
+
+<ul>
+    <li class="app-list-li">Date: @Model.date</li>
+    <li class="app-list-li">Time: @Model.time</li>
+    <li class="app-list-li">Doctor: @Model.doctorLastName, @Model.doctorFirstName</li>
+    <li class="app-list-li">Location: @Model.locationName</li>
+    <li class="app-list-li">@Model.address</li>
+    <li class="app-list-li">@Model.city | @Model.province | @Model.postal</li>
+    <li class="app-list-li">Additional_Info: @Model.additionalInfo</li>
+    <li class="app-list-li">
+        @Html.ActionLink("Return", "ShowPatientAppointment", "Appointment", new { @class = "action-link-btn" })
+        @Html.ActionLink("Delete", "CancelPatientAppointment", "Appointment", new { _id = Model.appointmentId }, new { @class = "action-link-btn" })
+    </li>
+</ul>

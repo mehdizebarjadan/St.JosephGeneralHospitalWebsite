@@ -1,0 +1,69 @@
+﻿
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+
+
+/* Medical History */
+.list-container table {
+    margin: 20px 0;
+    border: 1px solid #636363;
+    width: 100%;
+}
+.list-container thead {
+    font-weight:bold;
+}
+.list-container td {
+    padding: 10px;
+    min-width:60px;
+}
+
+.list-container .header {
+    font-weight: bold;
+    color: #ffffff;
+    background: #636363;
+}
+
+.list-container-td-blue {
+    background: #afd7f7;
+}
+.patientname-container {
+    margin-top:10px;
+}
+    .patientname-container span:first-child {
+        font-weight:bold;
+    }
+
+.desc-textarea {
+    width : 400px;
+    height : 200px;
+}
+.paging-container {
+    margin-bottom:10px;
+}
+.addnew-container {
+    margin-top:10px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+.detail-container {
+    margin-bottom:10px;
+}
+.detail-item-container {
+    margin-top:5px;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+.detail-img-container {
+    float:left;
+}
+.detail-text-container {
+    float:left;
+    margin-left:10px;
+    width:600px;
+}
+.text-bold {
+    font-weight:bold;
+}
+.clear-float {
+    clear:both;
+}
+/* End - Medical History */

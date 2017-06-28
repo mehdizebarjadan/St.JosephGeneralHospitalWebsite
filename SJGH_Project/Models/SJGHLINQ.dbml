@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_81347_sjgh" Class="SJGHLINQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=tcp:s06.winhost.com;Initial Catalog=DB_81347_sjgh;Integrated Security=False;User ID=DB_81347_sjgh_user" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_81347_sjghConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Appointment" Member="Appointments">
+    <Type Name="Appointment">
+      <Column Name="appointment_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="patient_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="doctor_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="time" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="additional_info" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Association Name="Doctor_Appointment" Member="Doctor" ThisKey="doctor_id" OtherKey="doctor_id" Type="Doctor" IsForeignKey="true" />
+      <Association Name="Location_Appointment" Member="Location" ThisKey="location_id" OtherKey="location_id" Type="Location" IsForeignKey="true" />
+      <Association Name="Patient_Appointment" Member="Patient" ThisKey="patient_id" OtherKey="patient_id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Seasonal_Dessese" Member="Seasonal_Desseses">
+    <Type Name="Seasonal_Dessese">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="start_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="start_time" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="topic" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="image_url" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contact" Member="Contacts">
+    <Type Name="Contact">
+      <Column Name="contact_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nature" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="message" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="customer_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="Customer_Order" Member="Orders" ThisKey="customer_id" OtherKey="customer_id" Type="Order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department" Member="Departments">
+    <Type Name="Department">
+      <Column Name="department_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Association Name="Department_Volunteer_Oppoturnity" Member="Volunteer_Oppoturnities" ThisKey="department_id" OtherKey="department_id" Type="Volunteer_Oppoturnity" />
+      <Association Name="Location_Department" Member="Location" ThisKey="location_id" OtherKey="location_id" Type="Location" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Doctor" Member="Doctors">
+    <Type Name="Doctor">
+      <Column Name="doctor_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="department_name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="specialty" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bio" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="photo_url" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Doctor_Appointment" Member="Appointments" ThisKey="doctor_id" OtherKey="doctor_id" Type="Appointment" />
+      <Association Name="Doctor_Medical_History" Member="Medical_Histories" ThisKey="doctor_id" OtherKey="doctor_id" Type="Medical_History" />
+      <Association Name="Doctor_Prescription" Member="Prescriptions" ThisKey="doctor_id" OtherKey="doctor_id" Type="Prescription" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Document" Member="Documents">
+    <Type Name="Document">
+      <Column Name="doc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="date_posted" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ER_Wait_Time" Member="ER_Wait_Times">
+    <Type Name="ER_Wait_Time">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="arrival" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="check_in" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="wait_time" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event_Calendar" Member="Event_Calendars">
+    <Type Name="Event_Calendar">
+      <Column Name="event_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="start_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="end_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="start_time" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="end_time" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="image_url" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Location_Event_Calendar" Member="Location" ThisKey="location_id" OtherKey="location_id" Type="Location" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job_Post" Member="Job_Posts">
+    <Type Name="Job_Post">
+      <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="summary" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="qualification" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="Location_Job_Post" Member="Location" ThisKey="location_id" OtherKey="location_id" Type="Location" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Location" Member="Locations">
+    <Type Name="Location">
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="address" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="city" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="postal" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="lat" Type="System.Decimal" DbType="Decimal(11,8)" CanBeNull="true" />
+      <Column Name="lon" Type="System.Decimal" DbType="Decimal(11,8)" CanBeNull="true" />
+      <Association Name="Location_Appointment" Member="Appointments" ThisKey="location_id" OtherKey="location_id" Type="Appointment" />
+      <Association Name="Location_Department" Member="Departments" ThisKey="location_id" OtherKey="location_id" Type="Department" />
+      <Association Name="Location_Event_Calendar" Member="Event_Calendars" ThisKey="location_id" OtherKey="location_id" Type="Event_Calendar" />
+      <Association Name="Location_Job_Post" Member="Job_Posts" ThisKey="location_id" OtherKey="location_id" Type="Job_Post" />
+      <Association Name="Location_Volunteer_Oppoturnity" Member="Volunteer_Oppoturnities" ThisKey="location_id" OtherKey="location_id" Type="Volunteer_Oppoturnity" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Medical_History" Member="Medical_Histories">
+    <Type Name="Medical_History">
+      <Column Name="history_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="patient_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="doctor_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="Doctor_Medical_History" Member="Doctor" ThisKey="doctor_id" OtherKey="doctor_id" Type="Doctor" IsForeignKey="true" />
+      <Association Name="Patient_Medical_History" Member="Patient" ThisKey="patient_id" OtherKey="patient_id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NeewFeed" Member="NeewFeeds">
+    <Type Name="NeewFeed">
+      <Column Name="news_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="headline" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="body" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="author" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="published" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="photo_url" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="category" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OR_Status" Member="OR_Status">
+    <Type Name="OR_Status">
+      <Column Name="status_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="patient_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="message" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Patient_OR_Status" Member="Patient" ThisKey="patient_id" OtherKey="patient_id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Order_Item" Member="Order_Items">
+    <Type Name="Order_Item">
+      <Column Name="order_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Order_Order_Item" Member="Order" ThisKey="order_id" OtherKey="order_id" Type="Order" IsForeignKey="true" />
+      <Association Name="Product_Order_Item" Member="Product" ThisKey="product_id" OtherKey="product_id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Order">
+      <Column Name="order_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="customer_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="patient_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="message" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Order_Order_Item" Member="Order_Items" ThisKey="order_id" OtherKey="order_id" Type="Order_Item" />
+      <Association Name="Customer_Order" Member="Customer" ThisKey="customer_id" OtherKey="customer_id" Type="Customer" IsForeignKey="true" />
+      <Association Name="Patient_Order" Member="Patient" ThisKey="patient_id" OtherKey="patient_id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patient" Member="Patients">
+    <Type Name="Patient">
+      <Column Name="patient_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="health_card" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dob" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="province" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="postal" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Patient_Appointment" Member="Appointments" ThisKey="patient_id" OtherKey="patient_id" Type="Appointment" />
+      <Association Name="Patient_Medical_History" Member="Medical_Histories" ThisKey="patient_id" OtherKey="patient_id" Type="Medical_History" />
+      <Association Name="Patient_OR_Status" Member="OR_Status" ThisKey="patient_id" OtherKey="patient_id" Type="OR_Status" />
+      <Association Name="Patient_Order" Member="Orders" ThisKey="patient_id" OtherKey="patient_id" Type="Order" />
+      <Association Name="Patient_Prescription" Member="Prescriptions" ThisKey="patient_id" OtherKey="patient_id" Type="Prescription" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prescription" Member="Prescriptions">
+    <Type Name="Prescription">
+      <Column Name="prescription_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="patient_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="doctor_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="Prescription_Prescription_Refill" Member="Prescription_Refills" ThisKey="prescription_id" OtherKey="prescription_id" Type="Prescription_Refill" />
+      <Association Name="Doctor_Prescription" Member="Doctor" ThisKey="doctor_id" OtherKey="doctor_id" Type="Doctor" IsForeignKey="true" />
+      <Association Name="Patient_Prescription" Member="Patient" ThisKey="patient_id" OtherKey="patient_id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prescription_Refill" Member="Prescription_Refills">
+    <Type Name="Prescription_Refill">
+      <Column Name="refill_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="prescription_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="refill_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Prescription_Prescription_Refill" Member="Prescription" ThisKey="prescription_id" OtherKey="prescription_id" Type="Prescription" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="image_url" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="publish" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_Order_Item" Member="Order_Items" ThisKey="product_id" OtherKey="product_id" Type="Order_Item" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Volunteer_Oppoturnity" Member="Volunteer_Oppoturnities">
+    <Type Name="Volunteer_Oppoturnity">
+      <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="department_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="posting_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="closing_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="duties" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="contact" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Department_Volunteer_Oppoturnity" Member="Department" ThisKey="department_id" OtherKey="department_id" Type="Department" IsForeignKey="true" />
+      <Association Name="Location_Volunteer_Oppoturnity" Member="Location" ThisKey="location_id" OtherKey="location_id" Type="Location" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.YouTube" Member="YouTubes">
+    <Type Name="YouTube">
+      <Column Name="video_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="author" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="category" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="published" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="photo_url" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job_Application" Member="Job_Applications">
+    <Type Name="Job_Application">
+      <Column Name="resume_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="file_url" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

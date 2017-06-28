@@ -1,0 +1,51 @@
+﻿@model SJGH_Project.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title.</h2>
+</hgroup>
+
+<div id="log_form">
+    <h3>Are you part of our hospital?</h3>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Log in Form</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                </li>
+            </ol>
+            <input type="submit" value="Log in" />
+        </fieldset>
+        <p id="register_link">
+            @Html.ActionLink("Register", "Register") if you don't have an account.
+        </p>
+    }
+</div>
+<div id="form_img_desc">
+    <img class="image_log_def" src="~/Images/login.png" alt="Nurse Register" title="Register" />
+</div>
+@*Empty divs to clear floats*@
+<div class="clear"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

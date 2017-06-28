@@ -1,0 +1,34 @@
+﻿@model SJGH_Project.Models.Doctor
+
+@{
+    ViewBag.Title = "Doctor Profile";
+    string isActive;
+    if (Model.status == 0)
+    {
+        isActive = "Disable";
+    }
+    else
+    {
+        isActive = "Enable";
+    }
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/scStyle.css" type="text/css" rel="stylesheet" />
+}
+
+<h2>Doctor Profile</h2>
+
+<ul>
+    <li class="user-detail-li">DEPARTMENT: @Model.department_name</li>
+    <li class="user-detail-li">FIRST NAME: @Model.firstname</li>
+    <li class="user-detail-li">LAST NAME: @Model.lastname</li>
+    <li class="user-detail-li">EMAIL: @Model.email</li>
+    <li class="user-detail-li">PHONE: @Model.phone</li>
+    <li class="user-detail-li">SPECIALTY: @Model.specialty</li>
+    <li class="user-detail-li">BIOGRAPHY: @Model.bio</li>
+    <li class="user-detail-li">
+        @Html.ActionLink("Return", "Index", "DoctorAccount", new { @class = "action-link-btn" })
+        @Html.ActionLink("Update", "UpdateDoctor", new { id = Model.doctor_id }, new { @class = "action-link-btn" })
+    </li>
+</ul>

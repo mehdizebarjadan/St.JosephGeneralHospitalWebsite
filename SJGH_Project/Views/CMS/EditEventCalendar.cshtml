@@ -1,0 +1,118 @@
+﻿@model SJGH_Project.Models.Event_Calendar
+
+@section scStyles {
+    <link href="~/Content/scThemes/Mehdi.css" rel="stylesheet" type="text/css" />
+}
+
+@{
+    ViewBag.Title = "Edit Event Calendar";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    List<SelectListItem> locations = new List<SelectListItem>();
+    locations.Add(new SelectListItem
+    {
+        Text = "Please select",
+        Value = "",
+        Selected = true
+    });
+    foreach (var location in ViewBag.Locations as IEnumerable<SJGH_Project.Models.Location>)
+    {
+        locations.Add(new SelectListItem
+        {
+            Text = location.name,
+            Value = location.location_id.ToString()
+        });
+    }
+}
+
+<h2>Edit Event Calendar</h2>
+
+@using (Html.BeginForm("EditEventCalendar", "CMS", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Event_Calendar</legend>
+
+        @Html.HiddenFor(model => model.event_id)
+        @Html.HiddenFor(model => model.image_url)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.location_id)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.location_id, locations)
+            @Html.ValidationMessageFor(model => model.location_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.start_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.start_date)
+            @Html.ValidationMessageFor(model => model.start_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.end_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.end_date)
+            @Html.ValidationMessageFor(model => model.end_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.start_time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.start_time)
+            @Html.ValidationMessageFor(model => model.start_time)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.end_time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.end_time)
+            @Html.ValidationMessageFor(model => model.end_time)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.image_url)
+        </div>
+        <div>
+            @if(Model.image_url != null && Model.image_url != ""){
+                <img src="~/Uploads/EventCalendar/@Model.image_url" width="250px" />
+            }
+        </div>
+        <div class="editor-field">
+            <input type="file" name="file" />
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "EventCalendar")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

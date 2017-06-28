@@ -1,0 +1,57 @@
+﻿/*Change password success msg*/
+.message-success{
+    font-weight: bold;
+    color: green;
+    padding: 10px 0;
+}
+
+/*Change password - login as*/
+.message-login-as{
+    font-weight: bold;
+    color: #0065B3;
+    padding: 10px 0;
+}
+
+.profile-link-li{
+    padding: 10px;
+}
+
+.app-current-datetime {
+    font-weight: bold;
+    color: #0065B3;
+}
+
+/*Show appointment*/
+.app-list-li{
+    font-weight: bold;
+    width: 250px;
+    padding: 15px;
+}
+
+.app-list-li + .app-list-li {
+    border-top: 1px solid #0065B3;
+}
+
+
+.user-list-table {
+    margin: 20px 0;
+    border: 1px solid #636363;
+}
+
+.user-list-td {
+    padding: 10px;
+}
+
+.user-list-header {
+    font-weight: bold;
+    color: #ffffff;
+    background: #636363;
+}
+
+.user-list-td-blue {
+    background: #afd7f7;
+}
+
+.user-detail-li {
+    padding: 10px;
+}

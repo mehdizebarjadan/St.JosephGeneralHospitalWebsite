@@ -1,0 +1,34 @@
+﻿@model SJGH_Project.Models.NeewFeed
+
+@{
+    ViewBag.Title = "News: " + @Model.headline;
+}
+
+@*== Give dynamic id to be selected news if case admin has determined that this pieceis a normal or feature entry for modifications ==*@
+<article id=@Html.DisplayTextFor(x => x.category)>
+    <div id="article_photo">
+        @*== Dinamically Get Image and set title for accessibility purposes ==*@
+        <img src='@Url.Content(@Model.photo_url)' alt="Feature Photo" title="@Html.DisplayFor(x => x.headline)" width="604" height="302" />
+    </div>
+    
+    @*== Dinamically Get Title ==*@
+    <h2 id="individual_news">@Html.DisplayFor(x => x.headline)</h2>
+
+    @*== Dinamically Get Author ==*@
+    <p id="byline">By <span id="author">@Html.DisplayFor(x => x.author)</span></p>
+
+    @*== Entry Date (display Name of Month in a user friendly way) ==*@
+    <time id="individual_entry_date"><span class="day">@Model.date.Day</span> <span class="month">@Model.date.ToString("MMMM")</span> <span class="year">@Model.date.Year</span></time>
+
+    @*== emty div to clear floats==*@
+    <div class="clear"></div>
+
+    <div id="body_article">
+        @*== Html Helper that renders html tags coming from DB ==*@
+        @Html.Raw(@Model.body)
+    </div>
+    @*== CLEAR FLOAT IS USER decides to use online images ==*@
+    <div class="clear"></div>
+    @*== Back to News list ==*@
+    @Html.ActionLink("Back to News Feed", "Index", "NewsFeed", null, new { id = "back_to_newslist" })
+</article>

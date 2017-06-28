@@ -1,0 +1,99 @@
+﻿
+@model SJGH_Project.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title.</h2>
+    <h3>Create a new account.</h3>
+</hgroup>
+
+<div id="log_form">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+            @* Customized fields for taking extra user input to create patient *@
+            <li>
+                @Html.LabelFor(m => m.HealthCard)
+                @Html.TextBoxFor(m => m.HealthCard)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.DoB)
+                @Html.TextBoxFor(m => m.DoB, new { @type = "date"})
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Phone)
+                @Html.TextBoxFor(m => m.Phone)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Postal)
+                @Html.TextBoxFor(m => m.Postal)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.City)
+                @Html.TextBoxFor(m => m.City)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Province)
+                @Html.DropDownListFor(m => m.Province, new[] {
+                                                new SelectListItem(){Text = "Please select", Value="", Selected=true},
+                                                new SelectListItem(){Text = "Alberta", Value="AB"},
+                                                new SelectListItem(){Text = "British Columbia", Value="BC"},
+                                                new SelectListItem(){Text = "Manitoba", Value="MA"},
+                                                new SelectListItem(){Text = "New Brunswick", Value="NB"},
+                                                new SelectListItem(){Text = "Newfoundland", Value="NF"},
+                                                new SelectListItem(){Text = "Nova Scotia", Value="NS"},
+                                                new SelectListItem(){Text = "Ontario", Value="ON"},
+                                                new SelectListItem(){Text = "PEI", Value="PE"},
+                                                new SelectListItem(){Text = "Quebec", Value="QC"},
+                                                new SelectListItem(){Text = "Saskatchewan", Value="SK"}
+                                            })
+            </li>
+        </ol>
+        <input type="submit" value="Register" />
+    </fieldset>
+    }
+</div>
+<div id="form_img_desc">
+    <img class="image_log_def" src="~/Images/nurse.png" alt="Nurse Register" title="Register" />
+</div>
+@*Empty divs to clear floats*@
+<div class="clear"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

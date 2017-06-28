@@ -1,0 +1,39 @@
+﻿@model SJGH_Project.Models.Patient
+
+@{
+    ViewBag.Title = "Patient Profile";
+
+    //convert status from boolean into string for display
+    string isActive;
+    if (Model.status == 0)
+    {
+        isActive = "Disable";
+    }
+    else
+    {
+        isActive = "Enable";
+    }
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/scStyle.css" type="text/css" rel="stylesheet" />
+}
+
+<h2>Profile</h2>
+
+<ul>
+    <li class="user-detail-li">HEALTH CARD: @Model.health_card</li>
+    <li class="user-detail-li">FIRST NAME: @Model.firstname</li>
+    <li class="user-detail-li">LAST NAME: @Model.lastname</li>
+    <li class="user-detail-li">Date of Birth: @Model.dob.ToString("MM/dd/yyyy")</li>
+    <li class="user-detail-li">EMAIL: @Model.email</li>
+    <li class="user-detail-li">PHONE: @Model.phone</li>
+    <li class="user-detail-li">ADDRESS: @Model.address</li>
+    <li class="user-detail-li">CITY: @Model.city</li>
+    <li class="user-detail-li">PROVINCE: @Model.province</li>
+    <li class="user-detail-li">POSTAL CODE: @Model.postal</li>
+    <li class="user-detail-li">
+        @Html.ActionLink("Go back", "Index", "PatientAccount", new { @class = "action-link-btn" })
+        @Html.ActionLink("Update", "UpdatePatient", new { id = Model.patient_id } , new { @class = "action-link-btn" })
+    </li>
+</ul>

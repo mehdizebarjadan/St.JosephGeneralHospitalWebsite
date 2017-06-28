@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SJGH_Project.Models.NeewFeed>
+
+@{
+    ViewBag.Title = "CMS News Feed";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Manage News Feed Feature</h2>
+
+@*== LINK TO INSERT VIEW ==*@
+
+ @Html.ActionLink("Insert News", "newsInsert", "NewsFeedCMS", new {@id = "insert_news_link" })
+
+@*== Table with all records to manage ==*@
+<table class="news-list-table">
+    <tr class="news-list-tr">
+        <td class="news-list-td news-list-header">TITLE</td>
+        <td class="news-list-td news-list-header">AUTHOR</td>
+        <td class="news-list-td news-list-header">DATE</td>
+        <td class="news-list-td news-list-header">PUBLISHED</td>
+        <td class="news-list-td news-list-header">CATEGORY</td>
+        <td class="news-list-td news-list-header" id="actions">ACTION</td>
+    </tr>
+
+    @*== for each that brings records from DB ==*@
+    @foreach (var x in Model)
+    {
+        <tr class="news-list-tr">
+            <td class="news-list-td news-list-td-blue">@x.headline</td>
+            <td class="news-list-td">@x.author</td>
+            <td class="news-list-td news-list-td-blue">@x.date.ToShortDateString()</td>
+            <td class="news-list-td">@x.published</td>
+            <td class="news-list-td news-list-td-blue">@x.category</td>
+            <td class="news-list-td">@Html.ActionLink("Edit", "newsUpdate", new { id = x.news_id }) | @Html.ActionLink("Delete", "newsDelete", new { id = x.news_id })</td>
+
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,20 @@
+﻿@model SJGH_Project.Models.Patient
+
+@{
+    ViewBag.Title = "Patients";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/scStyle.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Hello, @Model.firstname!</h2>
+
+<ul>
+    <li class="profile-link-li">@Html.ActionLink("Profile", "PatientProfile", "PatientAccount")</li>
+    <li class="profile-link-li">@Html.ActionLink("Appointments", "ShowPatientAppointment", "Appointment")</li>
+    <li class="profile-link-li">@Html.ActionLink("Medical History", "Index", "MedicalHistory", new { id = Model.patient_id })</li>
+    <li class="profile-link-li">@Html.ActionLink("Update Password", "Manage", "Account")</li>
+</ul>
+
+

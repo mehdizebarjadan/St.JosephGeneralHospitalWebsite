@@ -1,0 +1,105 @@
+﻿@*@model IEnumerable<SJGH_Project.Models.Event_Calendar>*@
+@model PagedList.IPagedList<SJGH_Project.Models.Event_Calendar>
+
+@{
+    ViewBag.Title = "EventCalendar";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/Mehdi.css" rel="stylesheet" type="text/css" />
+}
+
+
+
+
+<h2>Event Calendar</h2>
+<div class="addnew-container">
+    @Html.ActionLink("Add Evenet Calendar", "InsertEventCalendar")
+</div>
+<div class="list-container">
+    <table>
+        <thead>
+            <tr>
+                <td>Location</td>
+                <td>Name</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Start Time</td>
+                <td>End Time</td>
+                <td>Description</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() < 1)
+            {
+                <tr>
+                    <td colspan="10">There is no event calendar data!</td>
+                </tr>
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(x => item.Location.name)</td>
+                    <td>@Html.DisplayFor(x => item.name)</td>
+                    <td>@Html.DisplayFor(x => item.start_date)</td>
+                    <td>@Html.DisplayFor(x => item.end_date)</td>
+                    <td>@Html.DisplayFor(x => item.start_time)</td>
+                    <td>@Html.DisplayFor(x => item.end_time)</td>
+                    <td>@Html.DisplayFor(x => item.description)</td>
+                    <td>@Html.ActionLink("Edit", "EditEventCalendar", new { id = item.event_id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteEventCalendar", new { id = item.event_id }, new { @class = "delete-event" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="paging-container">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+
+        @if (Model.HasPreviousPage)
+        {
+            @Html.ActionLink("<<", "EventCalendar", new {page = 1})
+            @Html.Raw(" ")
+            @Html.ActionLink("< Prev", "EventCalendar", new {page = Model.PageNumber - 1})
+        }
+        else{
+            @:<<
+            @Html.Raw(" ")
+            @:< Prev
+        }
+        @for (int i = 1; i <= Model.PageCount; i++ )
+        {
+            if (Model.PageNumber == i)
+            {
+                @Html.Raw("(" + i.ToString() + ")")
+            }
+            else{
+                @Html.ActionLink(i.ToString(), "EventCalendar", new {page = i})
+            }
+            @Html.Raw(" ")
+        }
+        @if (Model.HasNextPage)
+        {
+            @Html.ActionLink("Next >", "EventCalendar", new {page = Model.PageNumber + 1})
+            @Html.Raw(" ")
+            @Html.ActionLink(">>", "EventCalendar", new {page = Model.PageCount})
+        }
+        else
+        {  
+            @:Next >
+            @Html.Raw(" ")
+            @:>>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".delete-event").click(function (e) {
+            return confirm("Are you sure you want to delete selected record?");
+        });
+    });
+</script>
+

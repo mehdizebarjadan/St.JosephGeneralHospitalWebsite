@@ -1,0 +1,80 @@
+﻿@model SJGH_Project.Models.Seasonal_Dessese
+
+@{
+    ViewBag.Title = "Edit Seasonal Dessese";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/Mehdi.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Edit Seasonal Dessese</h2>
+
+@using (Html.BeginForm("EditSeasonalDessese", "CMS", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Seasonal_Dessese</legend>
+
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.image_url)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.start_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.start_date)
+            @Html.ValidationMessageFor(model => model.start_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.start_time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.start_time)
+            @Html.ValidationMessageFor(model => model.start_time)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.topic)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.topic)
+            @Html.ValidationMessageFor(model => model.topic)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.description, new { @class="desc-textarea" })
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.image_url)
+        </div>
+        <div>
+            @if(Model.image_url != null && Model.image_url.Trim() != ""){
+                <img src="~/Uploads/SeasonalDessese/@Model.image_url" width="250px" />
+            }
+        </div>
+        <div class="editor-field">
+            <input type="file" name="file" />
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "SeasonalDessese")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

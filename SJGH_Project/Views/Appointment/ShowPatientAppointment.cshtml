@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SJGH_Project.Models.ShowPatientAppointmentModel>
+
+@{
+    ViewBag.Title = "Patient Appointments";
+}
+
+@section scStyles {
+    <link href="~/Content/scThemes/scStyle.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Appointments</h2>
+
+<p class="app-current-datetime">Current Time: @System.DateTime.Now</p>
+<br />
+
+<p>@Html.ActionLink("Book a new appointment", "PatientCreateAppointment", "Appointment", new { @class = "action-link-btn" })</p>
+<br />
+
+<h3>Your up coming appointments</h3>
+
+
+<ul>
+    @foreach (var app in Model)
+    {
+        <li class="app-list-li">@app.date.ToString("MM/dd/yyyy") at @app.time | @Html.ActionLink("Detail", "PatientAppointmentDetail", "Appointment", new { _id = app.appointmentId }, new { @class = "action-link-btn" })</li>
+    }
+</ul>
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SJGH_Project.Models.NeewFeed>
+
+@{
+    ViewBag.Title = "News Page List";
+}
+
+<h2 id="news_list">Hospital News</h2>
+ <ul id="list_of_news">
+     @foreach (var x in Model)
+     {
+         @*==Generate clickable news title with img thumb and date==*@
+        <li>
+            @*== Entry Date (display Name of Month in a user friendly way) ==*@
+            <time class="news_entry_date"><span class="day">@x.date.Day</span> <span class="month">@x.date.ToString("MMMM")</span> <span class="year">@x.date.Year</span></time>
+
+            @*== emty div to clear floats==*@
+            <div class="clear"></div>
+
+            @*== News Box ==*@
+            <div class="news_box">
+                    <img class="news_thumb" src='@Url.Content(x.photo_url)' alt="news thumbnail" width="200" height="100" />
+                @Html.ActionLink(x.headline, "NewsPage", new { id = x.news_id })
+            </div>
+
+            @*== emty div to clear floats==*@
+            <div class="clear"></div>
+        </li>
+     }
+ </ul>

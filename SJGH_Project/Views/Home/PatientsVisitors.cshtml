@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Patients and Visitors";
+}
+
+<h2>Patients and visitors</h2>
+<h3>Sections</h3>
+
+<ul id="main_menu_item_page">
+    <li class="item_page_link">@Html.ActionLink("News Feed", "Index", "NewsFeed")</li>
+    <li class="item_page_link">@Html.ActionLink("General Info", "dummy", null, new { href = "#" })</li>
+    <li class="item_page_link">@Html.ActionLink("Patients", "dummy", null, new { href = "#" })</li>
+    <li class="item_page_link">@Html.ActionLink("Patient OR status", "dummy", null, new { href = "#" })</li>
+    <li class="item_page_link">@Html.ActionLink("Find Physician", "dummy", null, new { href = "#" })</li>
+    <li class="item_page_link">@Html.ActionLink("Visitors", "dummy", null, new { href = "#" })</li>
+    <li class="item_page_link">@Html.ActionLink("Online Gift Shop", "dummy", null, new { href = "#" })</li>
+</ul>
+<div id="main_item_photo">
+    <img src="~/Images/doctor_patient.png" width="400" height="293" alt="doctor and patient" />
+</div>
+<div class="clear"></div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/custom/menu_item_list.js")
+}

@@ -1,0 +1,117 @@
+﻿@model SJGH_Project.Models.UpdateDoctorModel
+@{
+    ViewBag.Title = "Admin Update Doctor";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    foreach (var item in ViewBag.DepartmentList)
+    {
+        if (item == @Model.Department)
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = item,
+                Value = item,
+                Selected = true
+            });
+        }
+        else
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = item,
+                Value = item
+            });
+        }
+    }
+
+    List<SelectListItem> statusListItems = new List<SelectListItem>();
+    if (Model.Status == 0)
+    {
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Disable",
+            Value = "0",
+            Selected = true
+        });
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Enable",
+            Value = "1"
+        });
+    }
+    else
+    {
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Disable",
+            Value = "0"
+        });
+        statusListItems.Add(new SelectListItem
+        {
+            Text = "Enable",
+            Value = "1",
+            Selected = true
+        });
+    }
+}
+
+<h2>Update Doctor</h2>
+
+<div id="log_form">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <fieldset>
+            <legend>Doctor information</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Department)
+                    @Html.DropDownListFor(m => m.Department, listItems)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.TextBoxFor(m => m.Phone)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Specialty)
+                    @Html.TextAreaFor(m => m.Specialty)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Bio)
+                    @Html.TextAreaFor(m => m.Bio)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Photo_url)
+                    @Html.TextBoxFor(m => m.Photo_url)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Status)
+                    @Html.DropDownListFor(m => m.Status, statusListItems)
+                </li>
+            </ol>
+            <input type="button" value="Cancel" onclick="javascript:document.location.href='@Url.Action("DoctorDetail", "AdminUser", new RouteValueDictionary(new { id = ViewBag.doctorId }))'" />
+            <input type="submit" value="Update" />
+        </fieldset>
+    }
+</div>
+@*Empty divs to clear floats*@
+<div class="clear"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

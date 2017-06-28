@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CMS | Manage Features</title>
+
+    @*Metatag for favicon*@
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @*Metatag for Google FOnts*@
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+
+    @*Bundles and CSS*@
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @*== Javascript for CKEDITOR ==*@
+    @Scripts.Render("~/ckeditor/ckeditor.js")
+
+    @* Render sectiions for adding individual stylesheet *@
+    @* Siwen Cen's stylesheet *@
+    @RenderSection("scStyles", false)
+
+    @* === HTML SHIV ===*@
+    <!--[if IE]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @*== Google Hosted Jquery ==*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    @*==Javascript for navigation ==*@
+    <script src="~/Scripts/custom/features_list.js"></script>
+
+</head>
+<body id="CMS">
+    <div id="wrapper">
+        <header>
+            <div id="logo">
+                <a id="logo_img" href="@Url.Action("Index", "Home")"><img src="~/Images/logo.png" /></a>
+
+                <h1 id="site_title">ST. JOSEPH'S HOSPITAL <span id="location">Elliot Lake</span></h1>
+
+                @*== Adding Partial View with login and register ==*@
+                <nav id="top_nav">
+                    <div class="log_partial">
+                        @Html.Partial("_LoginPartialCMS")
+                    </div>
+                </nav>
+            </div>
+            <nav id="main_nav">
+                @*empty div to clear floats*@
+                <div class="clear"></div>
+                <ul id="menu_items">
+                    <li class="main_items main_items_cms oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Features List", "Index", "CMS")
+                    </li>
+                    <li class="main_items main_items_cms oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Manage Pages", "dummy", null, new { href = "#" })
+                    </li>
+                    <li class="main_items main_items_cms oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Generate Reports", "dummy", null, new { href = "#" })
+                    </li>
+                    <li class="main_items main_items_cms oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Account Manager", "Index", "AdminUser")
+                    </li>
+                    <li class="main_items main_items_cms oneliner">
+                        @*== Menu Item ==*@
+                        @Html.ActionLink("Back to site", "Index", "Home")
+                    </li>
+                </ul>
+                @*empty div to clear floats*@
+                <div class="clear"></div>
+            </nav>
+        </header>
+        @RenderSection("featured", required: false)
+        <section id="content">
+            @* ===THIS IS WHAT IS GOING TO GET RENDERED IN THE INDIVUDUAL VIEWS=== *@
+
+            @RenderBody()
+
+            @* ===END OF THIS SECTION=== *@
+        </section>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - St. Joseph General Hospital - A TEAM4 Website</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
